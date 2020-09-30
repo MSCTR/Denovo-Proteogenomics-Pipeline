@@ -86,5 +86,5 @@ m<-merge(r3,r1,by="Sequence")
 r4<-r2[!duplicated(r2$Sequence),]
 r5<-count(r4,'GeneID')
 m1<-merge(m,r5,by="GeneID")
-write.csv(m1,"GENE_PEPTIDE_FILE_NUMBER_OF_PSMs_PEPTIDE_pseudogenes.csv")
+write.csv(m1,"GENE_PEPTIDE_FILE_NUMBER_OF_PSMs_PEPTIDE_All.csv")
 

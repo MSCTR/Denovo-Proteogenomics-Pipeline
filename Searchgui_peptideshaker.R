@@ -19,13 +19,11 @@ for (k in 1:length(f))
 {
 i<-f[k]
 j<-f1[k]
-cmd<-paste("peptide-shaker eu.isas.peptideshaker.cmd.PeptideShakerCLI -experiment ",i," -sample ",i," -replicate 1 -identification_files /media/DSRG4new/Hari/coloncancer/",i," -spectrum_files /media/DSRG4new/Hari/coloncancer/",j," -out /media/DSRG4new/Hari/coloncancer/",i,".cpsx",sep='')
-system(cmd)
+system(paste("peptide-shaker eu.isas.peptideshaker.cmd.PeptideShakerCLI -experiment ",i," -sample ",i," -replicate 1 -identification_files ",Specta_files_directory,"/",i," -spectrum_files ",Specta_files_directory,"/",j," -out ",Specta_files_directory,"/",i,".cpsx",sep=''))
 }
-f<-list.files(path="/media/DSRG4new/Hari/coloncancer/",pattern="*.cpsx$")
+f<-list.files(pattern="*.cpsx$")
 for(k in 1:length(f))
 {
 i=f[k]
-cmd<-paste("peptide-shaker eu.isas.peptideshaker.cmd.ReportCLI -in /media/DSRG4new/Hari/coloncancer/",i," -out_reports /media/DSRG4new/Hari/coloncancer -reports 3,6,9",sep='')
-system(cmd)
+system(paste("peptide-shaker eu.isas.peptideshaker.cmd.ReportCLI -in ",Specta_files_directory,"/",i," -out_reports ",Specta_files_directory," -reports 3,6,9",sep=''))
 }

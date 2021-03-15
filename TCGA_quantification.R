@@ -33,4 +33,4 @@ rownames(m1)<-m1[,1]
 m1<-m1[,-1]
 m2<-(m1/(m1$readcount))*1000000 #CPM normalisation
 m2$readcount<-NULL
-write.csv(m3,"GENE_PEPTIDE_FILE_NUMBER_OF_PEPTIDES_NORMALISED_COUNT.csv")
+write.csv(m2,"GENE_PEPTIDE_FILE_NUMBER_OF_PEPTIDES_NORMALISED_COUNT.csv")

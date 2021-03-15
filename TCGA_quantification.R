@@ -11,7 +11,7 @@ write.table(r3,row.names=F,col.names = F,quote=FALSE,file=paste("Novel_peptides_
 #TCGA BAM file quantification
 
 system(find /media/DSRG4new/Hari/Bamfiles -type f -name \*.bam | parallel -j 8 'java -jar dist/bamstats04.jar -B Novel_peptides_chromosomal_locations.bed {} > {.}_coverage.txt';) # Quantification of peptide loci in each bam file  
-system(find /media/DSRG4new/Hari/Bamfiles -type f -name \*_covergae.txt -exec cat {} + >mergedfile.txt)  # merging all the coverage files.
+system(find /media/DSRG4new/Hari/Bamfiles -type f -name \*covergae.txt -exec cat {} + >mergedfile.txt)  # merging all the coverage files.
 system(grep -vwE "(#chrom)" mergedfile.txt > merged_file_HEADER_REMOVED.txt) # remove headers
 r1<-read.delim("merged_file_HEADER_REMOVED.txt",header=FALSE)
 r2<-r1[,c(5,8)] #extract average expression of each peptide

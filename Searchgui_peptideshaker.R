@@ -13,6 +13,7 @@ system(paste("searchgui eu.isas.searchgui.cmd.IdentificationParametersCLI -out "
 system(paste("searchgui eu.isas.searchgui.cmd.SearchCLI -spectrum_files ",Specta_files_directory," -id_params ",i,".par -output_folder ", Specta_files_directory," -xtandem 1 -msgf 1 -tide 1  -output_default_name ",i,"_searchgui.out",sep=''))
 }
 setwd(Specta_files_directory)
+system(find ./ -name '*.mzML' -exec msconvert --filter "peakPicking true 2-" --mgf {} \;)
 f<-list.files(pattern="*zip")
 f1<-list.files(pattern="*mgf$")
 for (k in 1:length(f))

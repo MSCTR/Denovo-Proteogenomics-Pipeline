@@ -1,4 +1,3 @@
-#Fastq_files_directory="/media/DSRG4new/Hari/fastQfiles"
 #perl Trinity.pl Fastq_files_directory
 
 #perl code 

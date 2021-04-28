@@ -30,7 +30,7 @@ opendir(DIR, $dir) or die $!;
 		print "$file2\n";
 		$outFile = $readFiles[0]."OUT";
 		print "$readFiles[0]\n";
-                `Trinity --seqType fq --normalize_by_read_set --left $file1.fastq --right $file2.fastq --trimmomatic --full_cleanup --CPU 30 --max_memory 50G --bflyCPU 10 --bflyHeapSpaceMax 4G --output Trinity.$file --monitoring --verbose`;		
+                `Trinity --seqType fq --normalize_by_read_set --left $file1 --right $file2 --trimmomatic --full_cleanup --CPU 30 --max_memory 50G --bflyCPU 10 --bflyHeapSpaceMax 4G --output Trinity.$readFiles[0] --monitoring --verbose`;		
 		$count++; 
 	}
     }	

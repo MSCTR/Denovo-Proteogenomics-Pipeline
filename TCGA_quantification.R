@@ -9,10 +9,9 @@ r3$Sequence<-NULL
 write.table(r3,row.names=F,col.names = F,quote=FALSE,file=paste("Novel_peptides_chromosomal_locations.bed"),sep="\t")
 
 #TCGA BAM file quantification
-
-system(find /media/DSRG4new/Hari/Bamfiles -type f -name \*.bam | parallel -j 8 'java -jar dist/bamstats04.jar -B Novel_peptides_chromosomal_locations.bed {} > {.}_coverage.txt';) # Quantification of peptide loci in each bam file  
-system(find /media/DSRG4new/Hari/Bamfiles -type f -name \*covergae.txt -exec cat {} + >mergedfile.txt)  # merging all the coverage files.
-system(grep -vwE "(#chrom)" mergedfile.txt > merged_file_HEADER_REMOVED.txt) # remove headers
+system(paste("find /media/DSRG4new/Hari/Bamfiles -name *.bam | parallel -j 8 'java -jar dist/bamstats04.jar -B Novel_peptides_chromosomal_locations.bed {} > {.}_coverage.txt'",sep='')
+system(paste("find /media/DSRG4new/Hari/Bamfiles -name *covergae.txt -exec cat {} + >mergedfile.txt",sep=''))  # merging all the coverage files.
+system(paste("grep -vwE " , "(#chrom)"," mergedfile.txt > merged_file_HEADER_REMOVED.txt",sep='')) # remove headers
 r1<-read.delim("merged_file_HEADER_REMOVED.txt",header=FALSE)
 r2<-r1[,c(5,8)] #extract average expression of each peptide
 r2[r2==0]<-NA #converting 0 to NA

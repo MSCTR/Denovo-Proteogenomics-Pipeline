@@ -73,7 +73,7 @@ write.csv(f1.df,"Survival_p-value_novel_peptides_BRCA_Basal.csv")
 
 #Survival Analysis Her2 Subtype of BRCA
 
-m2<-subset(m1,PAM50Call_RNAseq=="Basal")
+m2<-subset(m1,PAM50Call_RNAseq=="Her2")
 m2 <-as.data.table(m2)
 m2[, expr := ifelse(findInterval(value, mean(value)) == 1, "high", "low"), by = gene]
 m2<-as.data.frame(m2)

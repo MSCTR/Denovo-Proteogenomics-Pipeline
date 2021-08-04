@@ -1,7 +1,13 @@
+#!/usr/bin/Rscript
+args <- commandArgs(TRUE)
+
 library("data.table")
 library("reshape2")
 library("survival")
 library("survminer")
+
+working_dir = args[1]
+setwd(working_dir)
 
 T1<-read.csv("GENE_PEPTIDE_FILE_NUMBER_OF_PEPTIDES_NORMALISED_COUNT.csv",header=TRUE)
 colnames(T1)[1]<-"id"
@@ -73,7 +79,7 @@ write.csv(f1.df,"Survival_p-value_novel_peptides_BRCA_Basal.csv")
 
 #Survival Analysis Her2 Subtype of BRCA
 
-m2<-subset(m1,PAM50Call_RNAseq=="Her2")
+m2<-subset(m1,PAM50Call_RNAseq=="Basal")
 m2 <-as.data.table(m2)
 m2[, expr := ifelse(findInterval(value, mean(value)) == 1, "high", "low"), by = gene]
 m2<-as.data.frame(m2)
